@@ -30,9 +30,17 @@ import React from 'react';
 import './index.css';
 
 import { createRoot } from "react-dom/client";
+import ChatScreen from './chatScreen';
+import { SocketProvider } from './providers/SocketProvider';
 
 const rootElement = document.getElementById('root');
 
-if(rootElement) {
-    createRoot(rootElement).render(<div>Hello, World!</div>);
+if (rootElement) {
+
+    createRoot(rootElement).render(
+        <SocketProvider>
+            <ChatScreen />
+        </SocketProvider>
+    );
 }
+
