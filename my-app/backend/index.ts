@@ -11,6 +11,13 @@ function main() {
     io.on("connection", (socket) => {
         console.log('New connection', socket.id);
 
+        socket.onAny((event, message) => { 
+            console.log('Received message', message, 'from', event);
+
+
+            io.emit(event, message);
+        });
+
         socket.on("message", (message) => {
             console.log('Received message', message);
 

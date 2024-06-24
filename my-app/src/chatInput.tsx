@@ -2,24 +2,28 @@ import React, { useState } from 'react';
 import './index.css';
 import { useSocket } from './providers/SocketProvider';
 
-function ChatInput() {
-    const [message, setMessage] = useState('');
-    const socket = useSocket();
+const ChatInput = ({ channelId }: {channelId: string}) => {
+  const [message, setMessage] = useState('');
+  const socket = useSocket();
 
-    const handleChangeMessage = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setMessage(event.currentTarget.value)
-    }
+  const sendMessage = (event: any) => {
+    event.preventDefault();
+    console.log('Sending message:', message);
+    socket.emit(channelId, message);
+    setMessage('');
+  };
 
   return (
-    <form onSubmit={(event) => {
-        event.preventDefault()
-        socket.send(message)
-        setMessage('')
-    }}>
-      <input value={message} onChange={handleChangeMessage}/>
-      <button type='submit' className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Send</button>
+    <form onSubmit={sendMessage}>
+      <input
+        type="text"
+        className="chat-input"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+      />
+      <button type="submit">Send</button>
     </form>
   );
-}
+};
 
 export default ChatInput;

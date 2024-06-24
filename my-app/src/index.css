@@ -9,3 +9,30 @@ body {
   max-width: 38rem;
   padding: 2rem;
 }
+
+/* Channel buttons */
+.channel-button {
+  @apply bg-blue-500 text-white px-4 py-2 rounded-lg m-2;
+}
+
+.channel-button:hover {
+  @apply bg-blue-700;
+}
+
+.channel-button.active {
+  @apply bg-blue-900;
+}
+
+/* Chat messages */
+.chat-message {
+  @apply bg-gray-100 p-2 rounded-lg m-2;
+}
+
+/* Chat input */
+.chat-input {
+  @apply border-2 border-gray-300 rounded-lg p-2 w-full;
+}
+
+.chat-input:focus {
+  @apply border-blue-500;
+}
