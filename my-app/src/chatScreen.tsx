@@ -22,8 +22,8 @@ function ChatScreen() {
             <div>
                 {currentChannel && <ChatMessage channelId={currentChannel}/>}
             </div>
-            {/* {currentChannel && <ChatInput channelId={currentChannel} />}
-            <ChatList channels={channels} activeChannel={currentChannel || ''} /> */}
+            {currentChannel && <ChatInput channelId={currentChannel} />}
+            {/* <ChatList channels={channels} activeChannel={currentChannel || ''} /> */}
         </div>
     );
 }
